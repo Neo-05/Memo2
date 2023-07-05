@@ -1,0 +1,10 @@
+body {
+    height: 100vh;
+    display: flex;
+    background: lightgray;
+    box-sizing: border-box;
+}
+
+img {
+    height: 100px;
+}
