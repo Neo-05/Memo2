@@ -37,6 +37,25 @@ let tableauCarte = [
     }
 ];
 
+let bestScore = {
+    pseudo : "",
+    temps : "100"
+}
+
+// si pas encore meilleur tps, mettre valeur défaut, sinon récup valeur et pseudo ds bestScore
+if(!JSON.parse(localStorage.getItem("bestScore")))
+    {
+        localStorage.setItem("bestScore", JSON.stringify(bestScore))
+    }
+    else
+    {
+        let bestScore = JSON.parse(localStorage.getItem("bestScore"))
+        document.getElementById("bestTemps").innerHTML = bestScore.temps 
+        document.getElementById("bestPseudo").innerHTML = bestScore.pseudo
+    }
+
+//document.getElementById("bestscore") = bestScore.temps
+
 let melanger = (tab) => {
     tab.sort(() => Math.random() - 0.5);
 }
@@ -50,7 +69,7 @@ function mettreAJourCompteur() {
 
 let compteur = setInterval(mettreAJourCompteur, 1000);
 
-let infoClassement = JSON.parse(localStorage.getItem("joueur"))
+let joueur = JSON.parse(localStorage.getItem("joueur"))
 
 melanger(tableauCarte);
 
@@ -88,12 +107,21 @@ for (let i = 0; i < tableauCarte.length; i++) {
                 
                 carteRetournee += 2;
                 if (carteRetournee === tableauCarte.length) {
-
-                    divVictoire.innerHTML = "C'est gagné en " + temps + "s !"
-                    divPseudo.innerHTML = "Bien joué " + infoClassement.pseudo
                     clearInterval(compteur);
-                }
+                    divVictoire.innerHTML = "C'est gagné en " + temps + "s !"
+                    divPseudo.innerHTML = "Bien joué " + joueur.pseudo
+                    
 
+                    //updater les info du meilleur si victos plus rapide
+                    
+                    if (temps < bestScore.temps){
+                        bestScore.temps = temps
+                        bestScore.pseudo = joueur.pseudo
+                        localStorage.setItem("bestScore", JSON.stringify(bestScore))
+                        document.getElementById("bestTemps").innerHTML = bestScore.temps 
+                        document.getElementById("bestPseudo").innerHTML = bestScore.pseudo
+                    }
+                }
             }
             else
             {
@@ -111,10 +139,5 @@ for (let i = 0; i < tableauCarte.length; i++) {
 
 let recommencer = () => {
     window.location.href ="index.html"    
-    console.log("t'as cliqué")
 }
-
-
-// écran acceuil plus entrer nom
-
 
