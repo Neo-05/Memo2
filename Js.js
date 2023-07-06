@@ -45,17 +45,21 @@ let temps = 0;
 
 function mettreAJourCompteur() {
     temps++;
-    document.getElementById("compteur").textContent = temps + " s";
-}
-setInterval(mettreAJourCompteur, 1000);
 
+}
+
+let compteur = setInterval(mettreAJourCompteur, 1000);
+
+let infoClassement = JSON.parse(localStorage.getItem("joueur"))
 
 melanger(tableauCarte);
 
 let score;
 let tableau = document.getElementById("tableau");
 let premiereCarte = null;
-
+let carteRetournee = 0;
+let divVictoire = document.getElementById("victoire");
+let divPseudo = document.getElementById("pseudo");
 
 for (let i = 0; i < tableauCarte.length; i++) {
     let carte = tableauCarte[i];
@@ -81,21 +85,21 @@ for (let i = 0; i < tableauCarte.length; i++) {
 
             if (premiereCarte.innerHTML === divCarte.innerHTML)
             {
+                
+                carteRetournee += 2;
+                if (carteRetournee === tableauCarte.length) {
 
-            // faire le test pour voir si tas gagné
-            // alert("Les images correspondent !");
+                    divVictoire.innerHTML = "C'est gagné en " + temps + "s !"
+                    divPseudo.innerHTML = "Bien joué " + infoClassement.pseudo
+                    clearInterval(compteur);
+                }
 
             }
             else
             {
-                
-                // premiereCarte.innerHTML = imgBaseInner;
-                // divCarte.innerHTML = imgBaseInner;
-
 
                 function mafonction() {premiereCarte.innerHTML = imgBaseInner; divCarte.innerHTML = imgBaseInner}
                 setTimeout(mafonction, 1000); 
-
             }
                 //je dois faire ça sinon premiereCarte se nullifie avant qu'il la fonction d'avant soit effectuée
             function mafonction() {premiereCarte = null}
@@ -104,7 +108,13 @@ for (let i = 0; i < tableauCarte.length; i++) {
     };
 }
 
-// fonction compteur de tps
+
+let recommencer = () => {
+    window.location.href ="index.html"    
+    console.log("t'as cliqué")
+}
+
+
 // écran acceuil plus entrer nom
-// esthétique
+
 
