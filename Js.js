@@ -112,7 +112,7 @@ for (let i = 0; i < tableauCarte.length; i++) {
                     divPseudo.innerHTML = "Bien joué " + joueur.pseudo
                     
 
-                    //updater les info du meilleur si victos plus rapide
+                    //updater les info du meilleur si victoire plus rapide
                     
                     if (temps < bestScore.temps){
                         bestScore.temps = temps
