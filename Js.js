@@ -127,11 +127,11 @@ for (let i = 0; i < tableauCarte.length; i++) {
             {
 
                 function mafonction() {premiereCarte.innerHTML = imgBaseInner; divCarte.innerHTML = imgBaseInner}
-                setTimeout(mafonction, 1000); 
+                setTimeout(mafonction, 500); 
             }
                 //je dois faire ça sinon premiereCarte se nullifie avant qu'il la fonction d'avant soit effectuée
             function mafonction() {premiereCarte = null}
-            setTimeout(mafonction, 1000); 
+            setTimeout(mafonction, 500); 
         }
     };
 }
@@ -140,4 +140,5 @@ for (let i = 0; i < tableauCarte.length; i++) {
 let recommencer = () => {
     window.location.href ="index.html"    
 }
+
 
