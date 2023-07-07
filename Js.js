@@ -56,7 +56,6 @@ if(!JSON.parse(localStorage.getItem("bestScore")))
         document.getElementById("bestPseudo").innerHTML = bestScore.pseudo
     }
 
-//document.getElementById("bestscore") = bestScore.temps
 
 let melanger = (tab) => {
     tab.sort(() => Math.random() - 0.5);
