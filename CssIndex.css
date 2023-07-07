@@ -15,7 +15,6 @@ body::before {
 
 #tt {
 
-    border: solid black 2px;
     text-align: center;
     font-size: 45px;
     font-style: bold;
@@ -34,14 +33,8 @@ body::before {
 
 #pseudoCreation {
     height: 30px;
-    
-
-
 }
 
-#labelpseudo {
-    
-}
 
 form {
     align-content: center;
