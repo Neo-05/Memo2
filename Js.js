@@ -42,14 +42,16 @@ let bestScore = {
     temps : "100"
 }
 
+
 // si pas encore meilleur tps, mettre valeur défaut, sinon récup valeur et pseudo ds bestScore
 if(!JSON.parse(localStorage.getItem("bestScore")))
     {
+        
         localStorage.setItem("bestScore", JSON.stringify(bestScore))
     }
     else
     {
-        let bestScore = JSON.parse(localStorage.getItem("bestScore"))
+        bestScore = JSON.parse(localStorage.getItem("bestScore"))
         document.getElementById("bestTemps").innerHTML = bestScore.temps 
         document.getElementById("bestPseudo").innerHTML = bestScore.pseudo
     }
@@ -115,6 +117,8 @@ for (let i = 0; i < tableauCarte.length; i++) {
                     //updater les info du meilleur si victoire plus rapide
                     
                     if (temps < bestScore.temps){
+                        console.log(temps)
+                        console.log(bestScore.temps)
                         bestScore.temps = temps
                         bestScore.pseudo = joueur.pseudo
                         localStorage.setItem("bestScore", JSON.stringify(bestScore))
